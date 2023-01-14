@@ -6,8 +6,8 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = env("DATABASE_URL")
+  provider = "postgresql"
+  url      = "postgresql://weijunang:password@localhost:5432/template1"
 }
 
 model Mail {
@@ -18,4 +18,6 @@ model Mail {
   createdTimestamp DateTime
   sendAtTimestamp  DateTime?
   isLost           Boolean?
+
+  @@map("TBL_MAIL")
 }
