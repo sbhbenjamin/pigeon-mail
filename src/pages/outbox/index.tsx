@@ -1,8 +1,8 @@
-import { SentMail } from '@/types';
 import { useState } from 'react';
 
-import SentMailCard from './SentMailCard';
+import { SentMail } from '@/types';
 import { sentMailStub } from '@/stubs';
+import SentMailCard from './components/SentMailCard';
 
 export default function SentMailTab() {
   const [selectedMail, setSelectedMail] = useState<SentMail>();
@@ -21,7 +21,7 @@ export default function SentMailTab() {
             </div>
           ))}
         </div>
-        {/* {selectedMail && <MailContent mail={selectedMail} />} */}
+        <div>{selectedMail?.to}</div>
       </div>
     </>
   );
