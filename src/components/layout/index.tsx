@@ -1,12 +1,16 @@
 import Header from '../header';
 
 const Layout = ({ children, showHeader }: any) => {
-  return (
-    <div className="mx-20 my-10">
-      {showHeader && <Header />}
-      <div>{children}</div>
-    </div>
-  );
+  if (showHeader) {
+    return (
+      <div className="mx-20 my-10">
+        <Header />
+        <div>{children}</div>
+      </div>
+    );
+  } else {
+    return <>{children}</>;
+  }
 };
 
 export default Layout;
