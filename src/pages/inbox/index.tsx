@@ -1,36 +1,29 @@
 import { useState } from 'react';
 
-import { SentMail } from '@/types';
-import InboxTab from './components/InboxTab';
+import { Mail } from '@/types';
+import { inboxMailStub } from '@/stubs';
+import MailCard from './components/InboxTab/MailCard';
+import MailContent from './components/InboxTab/MailContent';
 
-export default function Inbox() {
-  const [selectedTab, setSelectedTab] = useState<string>();
+export default function InboxTab() {
+  const [selectedMail, setSelectedMail] = useState<Mail>();
 
-  const handleSelectInboxTab = () => {
-    setSelectedTab('inbox');
+  const handleMailCardClick = (mail: Mail) => {
+    setSelectedMail(mail);
   };
-
-  const handleSelectSentTab = () => {
-    setSelectedTab('sent');
-  };
-
-  const noTabSelected = !selectedTab;
-  const inboxTabIsSelected = selectedTab === 'inbox';
-  const sentTabIsSelected = selectedTab === 'sent';
 
   return (
     <>
-      <div className="flex space-x-8">
-        <div className="" onClick={handleSelectInboxTab}>
-          <h2 className="font-semibold text-lg">Inbox</h2>
+      <div className="flex space-x-4">
+        <div>
+          {inboxMailStub.map((mail) => (
+            <div key={mail.id}>
+              <MailCard mail={mail} handleClick={handleMailCardClick} />
+            </div>
+          ))}
         </div>
-        <div className="bg-teal-100" onClick={handleSelectSentTab}>
-          <h2 className="font-semibold text-lg">Sent Mail</h2>
-        </div>
+        {selectedMail && <MailContent mail={selectedMail} />}
       </div>
-
-      {(inboxTabIsSelected || noTabSelected) && <InboxTab />}
-      {sentTabIsSelected}
     </>
   );
 }
