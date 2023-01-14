@@ -18,6 +18,5 @@ model Mail {
   createdTimestamp DateTime
   sendAtTimestamp  DateTime?
   isLost           Boolean?
-
   @@map("TBL_MAIL")
 }
