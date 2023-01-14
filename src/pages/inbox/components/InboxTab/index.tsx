@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import MailCard from './MailCard';
 import MailContent from './MailContent';
-import { mailStub } from '@/stubs';
+import { inboxMailStub } from '@/stubs';
 
 export default function InboxTab() {
   const [selectedMail, setSelectedMail] = useState<Mail>();
@@ -16,7 +16,7 @@ export default function InboxTab() {
     <>
       <div className="flex space-x-4">
         <div>
-          {mailStub.map((mail) => (
+          {inboxMailStub.map((mail) => (
             <div key={mail.id}>
               <MailCard mail={mail} handleClick={handleMailCardClick} />
             </div>
