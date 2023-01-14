@@ -7,7 +7,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = "postgresql://weijunang:password@localhost:5432/template1"
+  url      = "postgresql://ben:password@localhost:5433/template1"
 }
 
 model Mail {
